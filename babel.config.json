@@ -1,0 +1,23 @@
+{
+    "presets": [
+        [
+            "@babel/preset-env",
+            {
+                "modules": false,
+                "targets": "> 1%, not dead"
+            }
+        ],
+        "@babel/preset-react"
+    ],
+    "plugins": [
+        [
+            "@babel/plugin-syntax-dynamic-import",
+            "@babel/plugin-proposal-class-properties",
+            "@babel/plugin-transform-runtime",
+            {
+                "corejs": 3,
+                "useESModules": true
+            }
+        ]
+    ]
+}

@@ -1,0 +1,10 @@
+.git/
+/.idea
+/build
+.DS_Store
+/node_modules
+/npm-debug.log
+/.vbuilder/
+/mock
+/lint-result
+/.vscode
