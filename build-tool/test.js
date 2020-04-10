@@ -1,2 +1,2 @@
 const util = require('./util')
-console.log(util.getCssCacheGroups())
+console.log(util.getHtmlPlugins())

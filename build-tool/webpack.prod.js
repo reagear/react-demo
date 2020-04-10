@@ -39,16 +39,17 @@ const prodConfig = {
     optimization: {
         minimizer: [
             new TerserJSPlugin({
-                extractComments: false
+                extractComments: false,
+                parallel: true // 并行压缩
             }),
-            new OptimizeCSSAssetsPlugin({})
+            new OptimizeCSSAssetsPlugin()
         ],
         splitChunks: {
             cacheGroups: {
                 ...util.getCssCacheGroups(),
                 lib: {
                     // 框架 库
-                    test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+                    test: /[\\/]node_modules[\\/](react|react-dom)[\\/].+jsx?$/,
                     name: 'lib',
                     chunks: 'all'
                 },
@@ -56,7 +57,7 @@ const prodConfig = {
                     test: /\.jsx?/,
                     name: 'commons',
                     chunks: 'all',
-                    minChunks: 2,
+                    minChunks: 2
                     //minSize:0  //默认值不是0
                 }
             }

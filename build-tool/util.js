@@ -1,8 +1,10 @@
 const path = require('path');
+const fs = require('fs');
 const glob = require('glob');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const os = require('os');
 
 // pages/name/index.js
 function getEntry() {
@@ -10,9 +12,12 @@ function getEntry() {
 
     const entryFilePathList = glob.sync(path.resolve(__dirname, '../src/pages/*/index.js'));
     for (const path of entryFilePathList) {
-        const pageName = path.match(/src\/pages\/(.+)\/index.js/)[1];
-        const relativePath = `${pageName}/index`;
-        entry[relativePath] = path; // 输出js按照文件夹分开
+        let htmlPath = path.replace('.js', '.html');
+        if (fs.existsSync(htmlPath)) {
+            const pageName = path.match(/src\/pages\/(.+)\/index.js/)[1];
+            const relativePath = `${pageName}/index`;
+            entry[relativePath] = path; // 输出js按照文件夹分开
+        }
     }
 
     return entry;
@@ -29,7 +34,7 @@ function getHtmlPlugins(isDev) {
             fileName = `./pages/${pageName}.html`;
         }
 
-        return new HtmlWebpackPlugin({
+        let option = {
             template: path.resolve(__dirname, `../src/pages/${pageName}/index.html`),
             filename: fileName, // filename 相对的都是output.path
             chunks: [`${pageName}/index`], // 把哪些js用script引入
@@ -42,29 +47,44 @@ function getHtmlPlugins(isDev) {
                 minifyJS: true,
                 removeComments: false
             }
-        });
+        };
+
+        let jsPath = htmlFilepath.replace('.html', '.js');
+        if (!fs.existsSync(jsPath)) {
+            option.chunks = [];
+        }
+
+        return new HtmlWebpackPlugin(option);
     });
 }
 
 function getCssLoader(isDev) {
-    if (isDev) {
-        return ['style-loader', 'css-loader'];
-    } else {
-        return [
-            MiniCssExtractPlugin.loader,
-            'css-loader',
-            {
-                loader: 'postcss-loader',
-                options: {
-                    plugins: [
-                        autoprefixer({
-                            overrideBrowserslist: ['last 2 version', '>1%', 'ios 7']
-                        })
-                    ]
-                }
+    let value = [
+        {
+            loader: 'css-loader',
+            options: {
+                importLoaders: 1 //当css文件中又有引入了其他的css的时候，需要设置一下importLoaders
             }
-        ];
+        },
+        {
+            loader: 'postcss-loader',
+            options: {
+                plugins: [
+                    autoprefixer({
+                        overrideBrowserslist: ['last 2 version', '>1%', 'ios 7']
+                    })
+                ]
+            }
+        }
+    ];
+
+    if (isDev) {
+        value.unshift('style-loader');
+    } else {
+        value.unshift(MiniCssExtractPlugin.loader);
     }
+
+    return value;
 }
 
 function getLessLoader(isDev) {
@@ -99,10 +119,16 @@ function getCssCacheGroups() {
     return value;
 }
 
+// 逻辑核心
+function getCpuCoreCount() {
+    return os.cpus().length;
+}
+
 module.exports = {
     getEntry,
     getHtmlPlugins,
     getCssLoader,
     getLessLoader,
-    getCssCacheGroups
+    getCssCacheGroups,
+    getCpuCoreCount
 };

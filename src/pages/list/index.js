@@ -34,4 +34,4 @@ let a2 = [4,5,6,...a1]
 let o1 = {a:1}
 let o2 = {aa:1,...o1}*/
 
-console.log(add(1,2))
+console.log(add(1,2999932))

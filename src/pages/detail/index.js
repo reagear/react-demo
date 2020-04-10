@@ -6,7 +6,7 @@ import add from '../common/util';
 
 import m from './modules/a';
 
-const ccccccccccc = 123 * 456 * 789;
+const ccccccccccc = 1234 * 456 * 789;
 console.log('dddddddd', ccccccccccc);
 
 console.log(m.a());
@@ -34,7 +34,7 @@ class Search extends React.Component {
 
         return (
             <div className="search-text">
-                搜索文字的内容
+                搜索文的内容
                 <img src={logo} />
                 <div className="div1">0</div>
                 {Button ? (
