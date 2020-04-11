@@ -6,7 +6,7 @@ import add from '../common/util';
 
 import m from './modules/a';
 
-const ccccccccccc = 1234 * 456 * 789;
+const ccccccccccc = 1234 * 456 * 71;
 console.log('dddddddd', ccccccccccc);
 
 console.log(m.a());

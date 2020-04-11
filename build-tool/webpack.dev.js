@@ -3,6 +3,7 @@ const util = require('./util');
 const baseConfig = require('./webpack.base');
 const merge = require('webpack-merge');
 const webpack = require('webpack');
+const { PageLinkPlugin } = require('./plugins');
 
 const cssLoader = util.getCssLoader(true);
 const lessLoader = util.getLessLoader(true);
@@ -28,13 +29,16 @@ const devConfig = {
             }
         ]
     },
-    plugins: [...htmlPlugins],
+    plugins: [...htmlPlugins, new PageLinkPlugin()],
     devServer: {
         publicPath: '/',
         contentBase: './build', // 静态文件(非webpack输出)目录,相对项目根目录
         hot: true,
         stats: 'errors-only',
-        disableHostCheck: true
+        disableHostCheck: true,
+        after: function(app, server) {
+            global.devserverort = server.options.port;
+        }
     },
     devtool: 'eval-source-map'
 };

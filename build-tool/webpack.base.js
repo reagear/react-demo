@@ -60,7 +60,9 @@ module.exports = {
     ],
     stats: {
         assets: true,
+        children:false,
         colors: true,
+        entrypoints:false,
         errors: true,
         errorDetails: true,
         warnings: true,
