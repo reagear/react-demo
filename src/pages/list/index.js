@@ -1,37 +1,28 @@
-import './index.less'
-import add from '../common/util'
+import './index.less';
+import React, { Suspense } from 'react';
+import ReactDOM from 'react-dom';
+import Timer from './components/timer';
+import LoginControl from './components/login';
 
-/*
-const fn = () => {
-    console.log('a');
-};
+const Test = React.lazy(() => import('./components/test'));
 
-const isHas = [1, 2, 3].includes(2);
-
-const p = new Promise((resolve, reject) => {
-    resolve(100);
-});
-
-async function f() {
-    return 1;
-}
-
-class Point {
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { date: new Date() };
     }
 
-    getX() {
-        return this.x;
+    render() {
+        return (
+            <div>
+                <Suspense fallback={<div>Loading...</div>}>
+                    <Test />
+                </Suspense>
+                <Timer />
+                <LoginControl />
+            </div>
+        );
     }
 }
 
-let cp = new Point(25, 8);
-
-let a1 = [1,2,3];
-let a2 = [4,5,6,...a1]
-let o1 = {a:1}
-let o2 = {aa:1,...o1}*/
-
-console.log(add(1,2999932))
+ReactDOM.render(<App />, document.getElementById('app'));

@@ -6,12 +6,6 @@ import add from '../common/util';
 
 import m from './modules/a';
 
-const ccccccccccc = 1234 * 456 * 71;
-console.log('dddddddd', ccccccccccc);
-
-console.log(m.a());
-console.log(add(1, 2));
-
 class Search extends React.Component {
     constructor() {
         super(...arguments);
@@ -34,8 +28,8 @@ class Search extends React.Component {
 
         return (
             <div className="search-text">
-                搜索文的内容
-                <img src={logo} />
+                <span style={{ fontSize: '50px' }}>搜索文的内容-</span>
+                <img src={logo}  alt=""/>
                 <div className="div1">0</div>
                 {Button ? (
                     <Button />

@@ -1,5 +1,16 @@
 @color: #0c30ee;
 
+.text(@font-size,@line-height,@color) {
+    font-size: @font-size;
+    line-height: @line-height;
+    color: @color;
+}
+
+.text(@font-size,@line-height) {
+    font-size: @font-size;
+    line-height: @line-height;
+}
+
 body {
     color: @color;
     font-size: 24px;
@@ -7,6 +18,7 @@ body {
 
 .search-text {
     color: @color;
+    //.text(12px,16px,#000)
 }
 
 .div1 {
