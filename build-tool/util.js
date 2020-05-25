@@ -63,7 +63,7 @@ function getCssLoader(isDev) {
         {
             loader: 'css-loader',
             options: {
-                importLoaders: 1 //当css文件中又有引入了其他的css的时候，需要设置一下importLoaders
+                importLoaders: 1 // 当css文件中又有引入了其他的css的时候，需要设置一下importLoaders
             }
         },
         {
@@ -106,6 +106,7 @@ function recursiveIssuer(m) {
 function getCssCacheGroups() {
     let value = {};
     let entry = getEntry();
+    // eslint-disable-next-line guard-for-in
     for (const entryName in entry) {
         const pageName = entryName.split(/[\\/]/)[0];
         value[pageName] = {

@@ -1,9 +1,6 @@
 // eslint-config-alloy
 module.exports = {
-    extends: [
-        'alloy',
-        'alloy/react'
-    ],
+    extends: ['alloy', 'alloy/react'],
     env: {
         // 你的环境变量（包含多个预定义的全局变量）
         //
@@ -20,5 +17,8 @@ module.exports = {
     },
     rules: {
         // 自定义你的规则
-    }
+        'react-hooks/rules-of-hooks': 'error', // 检查 Hook 的规则
+        'react-hooks/exhaustive-deps': 'error' // 检查 effect 的依赖
+    },
+    plugins: ['react-hooks']
 };

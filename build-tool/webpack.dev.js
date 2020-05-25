@@ -2,7 +2,6 @@ const path = require('path');
 const util = require('./util');
 const baseConfig = require('./webpack.base');
 const merge = require('webpack-merge');
-const webpack = require('webpack');
 const { PageLinkPlugin } = require('./plugins');
 
 const cssLoader = util.getCssLoader(true);

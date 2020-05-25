@@ -58,7 +58,7 @@ const prodConfig = {
                     name: 'commons',
                     chunks: 'all',
                     minChunks: 2
-                    //minSize:0  //默认值不是0
+                    // minSize:0  //默认值不是0
                 }
             }
         }
