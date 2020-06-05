@@ -6,6 +6,7 @@ import LoginControl from './components/login';
 import ThemedButton from './components/context';
 import Form from './components/form';
 import Hooks from './components/hooks';
+import Rx from './components/rx-js';
 
 const Test = React.lazy(() => import('./components/test'));
 
@@ -20,6 +21,7 @@ class App extends React.Component {
     render() {
         return (
             <>
+                <Rx />
                 <Hooks />
                 <hr />
                 <div className="background" />

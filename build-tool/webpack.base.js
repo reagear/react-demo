@@ -72,6 +72,9 @@ module.exports = {
         hash: false,
         timings: true
     },
+    performance: {
+        hints: false
+    },
     resolve: {
         extensions: ['.js', '.jsx', '.less']
     }
