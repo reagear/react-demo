@@ -1,11 +1,15 @@
-import './index.less';
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'mobx-react';
+import dva from 'dva';
+import './index.less';
 import Counter from './components/counter';
 import counterStore from './store/counter';
 import Box from './components/box';
 import boxStore from './store/box';
+
+const app = dva();
+
+app.model(counterStore);
+app.model(boxStore);
 
 class App extends React.Component {
     constructor(props) {
@@ -16,17 +20,15 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <h3>mobx</h3>
+                <h3>dva</h3>
                 <Counter />
-                <Box>fdsfsdf</Box>
+                <Box />
             </div>
         );
     }
 }
 
-ReactDOM.render(
-    <Provider counterStore={counterStore} boxStore={boxStore}>
-        <App />
-    </Provider>,
-    document.getElementById('app')
-);
+// 不用路由
+app.router(() => <App />);
+
+app.start('#app');
