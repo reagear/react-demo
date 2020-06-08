@@ -6,23 +6,35 @@ class Counter extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
+        this.increase = this.increase.bind(this);
+        this.decrease = this.decrease.bind(this);
     }
 
-    increase = () => {
+    increase() {
         this.props.dispatch({ type: 'count/add' });
-    };
+    }
 
-    decrease = () => {
+    decrease() {
         this.props.dispatch({ type: 'count/minus' });
-    };
+    }
+
+    getCountClassName() {
+        let { count } = this.props.count;
+        if (count > 10) {
+            return 'count danger';
+        } else {
+            return 'count';
+        }
+    }
 
     render() {
         // 对应model中的state
         let { count } = this.props;
+        let countClassName = this.getCountClassName();
 
         return (
             <div className="m-counter">
-                <div className="count">{count.count}</div>
+                <div className={countClassName}>{count.count}</div>
                 <div className="count-right">
                     <div className="increase" onClick={this.increase}>
                         +

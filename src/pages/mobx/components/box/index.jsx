@@ -9,11 +9,12 @@ class Box extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
+        this.buttonClick = this.buttonClick.bind(this);
     }
 
-    buttonClick = () => {
+    buttonClick() {
         counterStore.reset();
-    };
+    }
 
     render() {
         let text = this.props.boxStore.text;

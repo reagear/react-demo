@@ -18,8 +18,7 @@ module.exports = {
     rules: {
         // 自定义你的规则
         'react-hooks/rules-of-hooks': 'error', // 检查 Hook 的规则
-        'react-hooks/exhaustive-deps': 'error', // 检查 effect 的依赖
-        'no-invalid-this': 'off'
+        'react-hooks/exhaustive-deps': 'error' // 检查 effect 的依赖
     },
     plugins: ['react-hooks']
 };
