@@ -6,7 +6,7 @@ function run() {
         // wdtoken: 'f98fa2c3'
     };
 
-    let url = 'http://thor.weidian.com/citybusiness/activity.mDetail/1.0';
+    let url = 'http://123.com';
 
     get({
         url:url,
