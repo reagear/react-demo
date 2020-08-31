@@ -17,16 +17,16 @@ class App extends React.Component {
         return (
             <div>
                 <h3>mobx</h3>
-                <Counter />
-                <Box>fdsfsdf</Box>
+                <Provider counterStore={counterStore}>
+                    <Counter />
+                </Provider>
+                <Provider boxStore={boxStore}>
+                    {' '}
+                    <Box>fdsfsdf</Box>
+                </Provider>
             </div>
         );
     }
 }
 
-ReactDOM.render(
-    <Provider counterStore={counterStore} boxStore={boxStore}>
-        <App />
-    </Provider>,
-    document.getElementById('app')
-);
+ReactDOM.render(<App />, document.getElementById('app'));
