@@ -51,7 +51,8 @@ const prodConfig = {
                     // 框架 库
                     test: /[\\/]node_modules[\\/](react|react-dom)[\\/].+jsx?$/,
                     name: 'lib',
-                    chunks: 'all'
+                    chunks: 'all',
+                    priority: 3
                 },
                 commons: {
                     test: /\.jsx?/,

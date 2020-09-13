@@ -1,3 +1,4 @@
+import 'antd/dist/antd.css';
 import './index.less';
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
@@ -7,6 +8,7 @@ import ThemedButton from './components/context';
 import Form from './components/form';
 import Hooks from './components/hooks';
 import Rx from './components/rx-js';
+import AntForm from './components/ant-form';
 
 const Test = React.lazy(() => import('./components/test'));
 
@@ -21,8 +23,9 @@ class App extends React.Component {
     render() {
         return (
             <>
+                <AntForm/>
                 <Rx />
-                <Hooks />
+                {/*<Hooks />*/}
                 <hr />
                 <div className="background" />
                 <p>

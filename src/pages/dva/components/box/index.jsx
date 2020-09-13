@@ -6,11 +6,12 @@ class Box extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
+        this.buttonClick = this.buttonClick.bind(this);
     }
 
-    buttonClick = () => {
+    buttonClick() {
         this.props.dispatch({ type: 'count/reset' });
-    };
+    }
 
     render() {
         let text = this.props.box.text;
