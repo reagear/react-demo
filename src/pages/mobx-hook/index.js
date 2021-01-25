@@ -2,8 +2,7 @@ import './index.less';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Counter from './components/counter/index';
-import NumberCom from './components/number/index'
+import Test from './components/local-store'
 
 class App extends React.Component {
     constructor(props) {
@@ -14,9 +13,7 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <h3>mobx</h3>
-                <Counter />
-                <NumberCom/>
+                <Test/>
             </div>
         );
     }
