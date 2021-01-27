@@ -1,6 +1,8 @@
 import './index.less';
+import { hot } from 'react-hot-loader/root';
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 
 import Test from './components/local-store'
 
@@ -19,8 +21,10 @@ class App extends React.Component {
     }
 }
 
+const AppWrap = hot(App)
+
 ReactDOM.render(
-    <App />,
+    <AppWrap />,
 
     document.getElementById('app')
 );

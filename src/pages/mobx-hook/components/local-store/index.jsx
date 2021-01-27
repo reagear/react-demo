@@ -22,7 +22,7 @@ function Comp() {
         count: 1,
 
         increase() {
-            state.count++;
+            state.count+=2;
             console.log(state.count)
         },
 
@@ -33,17 +33,20 @@ function Comp() {
 
     return useObserver(() => {
         return (
-            <div className="m-counter">
-                <div className={state.countClassName}>{state.count}</div>
-                <div className="count-right">
-                    <div className="increase" onClick={state.increase}>
-                        +
-                    </div>
-                    <div className="decrease" onClick={state.decrease}>
-                        -
+            <>
+                <div className="m-counter">
+                    <div className={state.countClassName}>{state.count}</div>
+                    <div className="count-right">
+                        <div className="increase" onClick={state.increase}>
+                            +
+                        </div>
+                        <div className="decrease" onClick={state.decrease}>
+                            -
+                        </div>
                     </div>
                 </div>
-            </div>
+                <p className="p">888</p>
+            </>
         );
     });
 }

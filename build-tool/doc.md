@@ -11,6 +11,6 @@
 + 动态加载的组件css怎么提取？
 + output.crossOriginLoading 无效 因为dev模式没跨域？
 + 入口只能是js文件,不能是jsx
-+ react 组件 HMR
++ react 组件 HMR [0] [react-hot-loader文档](https://github.com/gaearon/react-hot-loader)
 + 代码写一半报错 [0]
 + CSS module ?
