@@ -13,4 +13,4 @@
 + 入口只能是js文件,不能是jsx
 + react 组件 HMR [0] [react-hot-loader文档](https://github.com/gaearon/react-hot-loader)
 + 代码写一半报错 [0]
-+ CSS module ?
++ CSS module ? 根据引入css的方式决定是否开启 参考 https://github.com/umijs/umi/issues/1417

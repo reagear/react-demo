@@ -63,7 +63,10 @@ function getCssLoader(isDev) {
         {
             loader: 'css-loader',
             options: {
-                importLoaders: 1 // 当css文件中又有引入了其他的css的时候，需要设置一下importLoaders
+                importLoaders: 1, // 当css文件中又有引入了其他的css的时候，需要设置一下importLoaders
+                modules: {
+                    localIdentName: "[local]--[hash:base64:5]",
+                }
             }
         },
         {
