@@ -2,10 +2,10 @@ const path = require('path');
 const util = require('./util');
 const baseConfig = require('./webpack.base');
 const merge = require('webpack-merge');
-const { PageLinkPlugin } = require('./plugins');
+const { PageLinkPlugin } = require('./webpack-plugins');
 
-const cssLoader = util.getCssLoader(true);
-const lessLoader = util.getLessLoader(true);
+const cssRule = util.getCssRule(true);
+const lessRule = util.getLessRule(true);
 const htmlPlugins = util.getHtmlPlugins(true);
 
 const devConfig = {
@@ -18,14 +18,8 @@ const devConfig = {
     },
     module: {
         rules: [
-            {
-                test: /\.css$/,
-                use: cssLoader
-            },
-            {
-                test: /\.less/,
-                use: lessLoader
-            }
+            cssRule,
+            lessRule
         ]
     },
     plugins: [...htmlPlugins, new PageLinkPlugin()],

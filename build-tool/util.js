@@ -58,15 +58,21 @@ function getHtmlPlugins(isDev) {
     });
 }
 
-function getCssLoader(isDev) {
+function getCssLoader(isDev, useCssModule) {
+    let modules = false;
+
+    if (useCssModule) {
+        modules = {
+            localIdentName: '[local]--[hash:base64:5]'
+        };
+    }
+
     let value = [
         {
             loader: 'css-loader',
             options: {
                 importLoaders: 1, // 当css文件中又有引入了其他的css的时候，需要设置一下importLoaders
-                modules: {
-                    localIdentName: "[local]--[hash:base64:5]",
-                }
+                modules
             }
         },
         {
@@ -90,10 +96,46 @@ function getCssLoader(isDev) {
     return value;
 }
 
-function getLessLoader(isDev) {
-    let lessLoader = getCssLoader(isDev);
+function getLessLoader(isDev, useCssModule) {
+    let lessLoader = getCssLoader(isDev, useCssModule);
     lessLoader = lessLoader.concat(['less-loader']);
     return lessLoader;
+}
+
+function getCssRule(isDev) {
+    const cssLoaderNoModule = getCssLoader(isDev);
+    const cssLoaderWidthModule = getCssLoader(isDev, true);
+
+    return {
+        test: /\.css$/,
+        oneOf: [
+            {
+                resourceQuery: /css_modules/, // foo.css?css_modules
+                use: cssLoaderWidthModule
+            },
+            {
+                use: cssLoaderNoModule
+            }
+        ]
+    };
+}
+
+function getLessRule(isDev) {
+    const lessLoaderNoModule = getLessLoader(isDev);
+    const lessLoaderWithModule = getLessLoader(isDev, true);
+
+    return {
+        test: /\.less/,
+        oneOf: [
+            {
+                resourceQuery: /css_modules/, // foo.css?css_modules
+                use: lessLoaderWithModule
+            },
+            {
+                use: lessLoaderNoModule
+            }
+        ]
+    };
 }
 
 function recursiveIssuer(m) {
@@ -131,8 +173,8 @@ function getCpuCoreCount() {
 module.exports = {
     getEntry,
     getHtmlPlugins,
-    getCssLoader,
-    getLessLoader,
+    getCssRule,
+    getLessRule,
     getCssCacheGroups,
     getCpuCoreCount
 };
