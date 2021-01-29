@@ -6,9 +6,9 @@ const TerserJSPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
-const cssRule = util.getCssRule(true);
-const lessRule = util.getLessRule(true);
-const htmlPlugins = util.getHtmlPlugins(true);
+const cssRule = util.getCssRule(false);
+const lessRule = util.getLessRule(false);
+const htmlPlugins = util.getHtmlPlugins(false);
 
 const prodConfig = {
     mode: 'production',

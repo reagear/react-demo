@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import './index.less'
 
 const Child = ()=>{
     const [count, setCount] = useState(10);
