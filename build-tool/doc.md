@@ -17,3 +17,5 @@
 -   CSS module [0]
     -   根据引入 css 的方式决定是否开启 参考 https://github.com/umijs/umi/issues/1417
     -   同一个文件被 import 两次，分别是`import "a.less"`和`import style from "a.less"`打包出来的文件包含2份，一个用了cssModule一个没用
+
+- css 不用style-loader， 提取成整个文件，用类似 HMR 方式？
