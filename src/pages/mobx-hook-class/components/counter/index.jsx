@@ -4,7 +4,7 @@ import { useLocalStore, useObserver,MobXProviderContext } from 'mobx-react';
 import { CounterStoreContext } from '../../store/counter';
 
 function Comp() {
-    //const counterStore = React.useContext(CounterStoreContext);
+    // const counterStore = React.useContext(CounterStoreContext);
 
     const counterStore = React.useContext(MobXProviderContext).count
 

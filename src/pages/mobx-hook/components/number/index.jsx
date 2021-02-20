@@ -4,7 +4,7 @@ import { useObserver} from 'mobx-react';
 import { CounterStoreContext,counterStore} from '../../store/counter';
 
 function Comp() {
-    //const counterStore = React.useContext(CounterStoreContext);
+    // const counterStore = React.useContext(CounterStoreContext);
 
     return useObserver(() => {
         return (

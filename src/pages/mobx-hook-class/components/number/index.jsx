@@ -23,7 +23,7 @@ function Comp() {
     });
 }
 
-/*// 2. 传值 Provider组件，取值
+/* // 2. 传值 Provider组件，取值
 function Comp() {
     const counterStore = useStores().count;
 
@@ -37,9 +37,9 @@ function Comp() {
             </>
         );
     });
-}*/
+} */
 
-/*// 3. 直接使用store实例
+/* // 3. 直接使用store实例
 function Comp() {
     return useObserver(() => {
         return (
@@ -51,6 +51,6 @@ function Comp() {
             </>
         );
     });
-}*/
+} */
 
 export default Comp;

@@ -25,7 +25,7 @@ class App extends React.Component {
             <>
                 <AntForm/>
                 <Rx />
-                {/*<Hooks />*/}
+                {/* <Hooks /> */}
                 <hr />
                 <div className="background" />
                 <p>
