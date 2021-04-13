@@ -9,6 +9,7 @@ import Form from './components/form';
 import Hooks from './components/hooks';
 import Rx from './components/rx-js';
 import AntForm from './components/ant-form';
+import CommonTest from './components/common-test'
 
 const Test = React.lazy(() => import('./components/test'));
 
@@ -23,6 +24,7 @@ class App extends React.Component {
     render() {
         return (
             <>
+                <CommonTest/>
                 <AntForm/>
                 <Rx />
                 {/* <Hooks /> */}
