@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import logo from '../../assets/images/head-img.jpeg';
 import './index.less';
 
-class Search extends React.Component {
+class Search
+    extends React.Component {
     constructor() {
         super(...arguments);
 

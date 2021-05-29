@@ -1,60 +1,53 @@
+import React, { useEffect, useRef, useState } from 'react';
+import style from './index.less';
 import { Button } from 'antd';
-import React from 'react';
 
-class Comp extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            a: 1
-        };
-        this.bc = new BroadcastChannel('AlienZHOU');
-    }
+const RefTest = () => {
+    const [state, setState] = useState(0);
 
-    // eslint-disable-next-line react/sort-comp
-    onClick() {
-        this.setState({
-            a: 1
-        });
-        setTimeout(() => {
-            console.log('设置localStorage');
-            window.sessionStorage.a = +new Date();
-        });
-    }
+    const ref = useRef(0);
 
-    registerStorageEvent() {
-        console.log('监听 localStorage');
-        window.addEventListener('storage', (e) => {
-            console.log(e);
-        });
-    }
-
-    sendBcMessage = () => {
-        // eslint-disable-next-line no-invalid-this
-        this.bc.postMessage('gdfgdfgdfgdfg');
+    const changeState = () => {
+        setState((i) => i + 1);
+        ref.current++;
     };
 
-    componentDidMount() {
-        this.registerStorageEvent();
-    }
+    useEffect(() => {
+        console.log(`%c ref改变了：${ref.current}`, 'color:red;font-size:20px');
+        // eslint-disable-next-line
+    }, [ref.current]);
 
-    render() {
-        console.log('common-test render');
-        return (
-            <>
-                <Button type="primary" onClick={this.sendBcMessage}>
-                    发送广播消息
-                </Button>
-                <h3>render测试</h3>
-                <Button
-                    onClick={() => {
-                        this.onClick();
-                    }}
-                >
-                    测试
-                </Button>
-            </>
-        );
-    }
-}
+    return (
+        <div className={style.outer}>
+            <p className={style.state}>
+                <span>state:</span>
+                {state}
+            </p>
+            <p className={style.ref}>
+                <span>ref:</span>
+                {ref.current}
+            </p>
+            <Button onClick={changeState}>修改状态</Button>
+        </div>
+    );
+};
+
+const Comp = () => {
+    const [show, setShow] = useState(true);
+
+    return (
+        <>
+            {show ? <RefTest /> : null}
+            <Button
+                type="primary"
+                onClick={() => {
+                    setShow((i) => !i);
+                }}
+            >
+                开关组件
+            </Button>
+        </>
+    );
+};
 
 export default Comp;

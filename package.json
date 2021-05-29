@@ -26,10 +26,12 @@
         "dva": "2.6.0-beta.4",
         "mobx": "^5.15.4",
         "mobx-react": "^6.2.2",
+        "prop-types": "^15.7.2",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
         "react-redux": "^7.2.0",
         "redux": "^4.0.5",
+        "redux-logger": "^3.0.6",
         "redux-thunk": "^2.3.0",
         "rxjs": "^6.5.5",
         "rxjs-compat": "^6.5.5"
