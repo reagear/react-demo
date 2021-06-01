@@ -40,7 +40,7 @@ const prodConfig = {
         ],
         splitChunks: {
             cacheGroups: {
-                ...util.getCssCacheGroups(),
+                ...util.getCssCacheGroups(),// TODO: 可以去掉？
                 lib: {
                     // 框架 库
                     test: /[\\/]node_modules[\\/](react|react-dom)[\\/].+jsx?$/,
