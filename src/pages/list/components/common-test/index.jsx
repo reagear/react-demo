@@ -1,52 +1,46 @@
-import React, { useEffect, useRef, useState } from 'react';
-import style from './index.less';
-import { Button } from 'antd';
+import React from 'react';
+import css from 'styled-jsx/css';
 
-const RefTest = () => {
-    const [state, setState] = useState(0);
+const { className, styles } = css.resolve`
+    :global(.ss) {
+        color: red;
+    }
 
-    const ref = useRef(0);
+    :global(p) {
+        color: #eee;
+    }
+`;
 
-    const changeState = () => {
-        setState((i) => i + 1);
-        ref.current++;
-    };
-
-    useEffect(() => {
-        console.log(`%c ref改变了：${ref.current}`, 'color:red;font-size:20px');
-        // eslint-disable-next-line
-    }, [ref.current]);
-
+const InnerComp = ({ a, b, cn = '' }) => {
     return (
-        <div className={style.outer}>
-            <p className={style.state}>
-                <span>state:</span>
-                {state}
-            </p>
-            <p className={style.ref}>
-                <span>ref:</span>
-                {ref.current}
-            </p>
-            <Button onClick={changeState}>修改状态</Button>
+        <div className={cn}>
+            <p>a:{a}</p>
+            <p>b:{b}</p>
+            <div className="ss">13</div>
+            <style jsx>
+                {`
+                    p {
+                        font-size: 30px;
+                        color: #a8d52d;
+                    }
+                `}
+            </style>
         </div>
     );
 };
 
 const Comp = () => {
-    const [show, setShow] = useState(true);
+    const props = {
+        a: '...a',
+        b: '...b'
+    };
 
     return (
-        <>
-            {show ? <RefTest /> : null}
-            <Button
-                type="primary"
-                onClick={() => {
-                    setShow((i) => !i);
-                }}
-            >
-                开关组件
-            </Button>
-        </>
+        <div className={className}>
+            <p>外层组件</p>
+            <InnerComp {...props} a="正常a" b="正常b" cn={className} />
+            {styles}
+        </div>
     );
 };
 

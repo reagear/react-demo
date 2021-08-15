@@ -9,7 +9,7 @@ import Form from './components/form';
 import Hooks from './components/hooks';
 import Rx from './components/rx-js';
 import AntForm from './components/ant-form';
-import CommonTest from './components/common-test'
+import CommonTest from './components/common-test/index'
 
 const Test = React.lazy(() => import('./components/test'));
 
