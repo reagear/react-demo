@@ -2,7 +2,7 @@ import React from 'react';
 import css from 'styled-jsx/css';
 
 const { className, styles } = css.resolve`
-    :global(.ss) {
+    div :global(.ss) {
         color: red;
     }
 
@@ -36,7 +36,7 @@ const Comp = () => {
     };
 
     return (
-        <div className={className}>
+        <div>
             <p>外层组件</p>
             <InnerComp {...props} a="正常a" b="正常b" cn={className} />
             {styles}
