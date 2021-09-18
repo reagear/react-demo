@@ -15,7 +15,8 @@
         "lint:js": "eslint --ext .js,.jsx src/",
         "lint-fix:js": "eslint --fix --ext .js,.jsx src/",
         "lint:css": "stylelint \"**/*.{css,scss,sass,less}\"",
-        "lint-fix:css": "stylelint --fix \"**/*.{css,scss,sass,less}\""
+        "lint-fix:css": "stylelint --fix \"**/*.{css,scss,sass,less}\"",
+        "prepare": "husky install"
     },
     "keywords": [],
     "author": "",
@@ -64,8 +65,10 @@
         "glob": "^7.1.6",
         "hard-source-webpack-plugin-fixed-hashbug": "^0.13.2",
         "html-webpack-plugin": "^4.0.4",
+        "husky": "^7.0.2",
         "less": "^3.11.1",
         "less-loader": "^5.0.0",
+        "lint-staged": "^11.1.2",
         "mini-css-extract-plugin": "^0.9.0",
         "optimize-css-assets-webpack-plugin": "^5.0.3",
         "postcss-loader": "^3.0.0",
@@ -84,5 +87,15 @@
         "webpack-cli": "^3.3.11",
         "webpack-dev-server": "^3.10.3",
         "webpack-merge": "^4.2.2"
+    },
+    "lint-staged": {
+      "*.{js,jsx,ts,tsx}": [
+        "eslint --fix",
+        "prettier --write"
+      ],
+      "*.{css,scss,sass,less}": [
+        "stylelint --fix",
+        "prettier --write"
+      ]
     }
 }
