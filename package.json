@@ -90,11 +90,11 @@
     },
     "lint-staged": {
       "*.{js,jsx,ts,tsx}": [
-        "eslint --fix",
+        "eslint --color --fix",
         "prettier --write"
       ],
       "*.{css,scss,sass,less}": [
-        "stylelint --fix",
+        "stylelint --color --fix",
         "prettier --write"
       ]
     }
