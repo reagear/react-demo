@@ -1,4 +1,4 @@
-import style from'./index.less';
+import style from './index.less';
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import Child from './child';
@@ -10,7 +10,7 @@ function App() {
         setCount((count) => count + 1);
     };
 
-    console.log('父组件render方法执行')
+    console.log('父组件render方法执行');
 
     return (
         <div className={style.parent}>
