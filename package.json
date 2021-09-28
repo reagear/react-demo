@@ -89,13 +89,13 @@
         "webpack-merge": "^4.2.2"
     },
     "lint-staged": {
-      "*.{js,jsx,ts,tsx}": [
-        "eslint --color --fix",
-        "prettier --write"
-      ],
-      "*.{css,scss,sass,less}": [
-        "stylelint --color --fix",
-        "prettier --write"
-      ]
+        "*.{js,jsx,ts,tsx}": [
+            "eslint --color --fix",
+            "prettier --write"
+        ],
+        "*.{css,scss,sass,less}": [
+            "stylelint --color --fix",
+            "prettier --write"
+        ]
     }
 }
