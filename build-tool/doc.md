@@ -19,4 +19,5 @@
     -   同一个文件被 import 两次，分别是`import "a.less"`和`import style from "a.less"`打包出来的文件包含2份，一个用了cssModule一个没用
 
 - css 不用style-loader， 提取成整个文件，用类似 HMR 方式？
-- style-lint 属性顺序 [stylelint-config-recess-order](https://github.com/stormwarning/stylelint-config-recess-order) [顺序](https://github.com/twitter/recess/blob/29bccc870b7b4ccaa0a138e504caf608a6606b59/lib/lint/strict-property-order.js)
+- style-lint 属性顺序 [stylelint-config-recess-order](https://github.com/stormwarning/stylelint-config-recess-order) [顺序](https://github.com/twitter/recess/blob/29bccc870b7b4ccaa0a138e504caf608a6606b59/lib/lint/strict-property-order.js) [0]
+- HMR 和 styled-jsx 不兼容（控制台警告）
