@@ -16,7 +16,8 @@
         "lint-fix:js": "eslint --fix --ext .js,.jsx src/",
         "lint:css": "stylelint \"**/*.{css,scss,sass,less}\"",
         "lint-fix:css": "stylelint --fix \"**/*.{css,scss,sass,less}\"",
-        "prepare": "husky install"
+        "prepare": "husky install",
+        "build-image": "docker build -t react-demo ."
     },
     "keywords": [],
     "author": "",
